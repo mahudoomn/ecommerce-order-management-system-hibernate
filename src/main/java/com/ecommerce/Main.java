@@ -36,6 +36,7 @@ public class Main {
             System.out.println("16. View Customer Orders");
             System.out.println("17. View Order Details");
             System.out.println("18. Cancel Order");
+            System.out.println("19. Search Products By Price Range");
             System.out.println("0. Exit");
 
             int choice = sc.nextInt();
@@ -229,6 +230,17 @@ public class Main {
                     // Cancel Order
                     System.out.println("Enter Order ID: ");
                     orderManagementService.cancelOrder(sc.nextInt());
+                    break;
+                case 19:
+                    // Search Product By Price Range
+                    System.out.println("Enter the Minimum Price: ");
+                    double minimumPrice = sc.nextDouble();
+                    System.out.println("Enter the Maximum Price: ");
+                    double maximumPrice = sc.nextDouble();
+                    List<Product> productListByPriceRange = productService.getProductByPriceRange(minimumPrice, maximumPrice);
+                    for(Product product1: productListByPriceRange){
+                        System.out.println(product1);
+                    }
                     break;
                 case 0:
                     System.out.println("Thank You!");

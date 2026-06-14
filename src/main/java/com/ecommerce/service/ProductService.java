@@ -93,4 +93,13 @@ public class ProductService {
         }
         return products;
     }
+
+    public List<Product> getProductByPriceRange(double minPrice, double maxPrice){
+        List<Product> productListByPriceRange = productDAO.getProductByPriceRange(minPrice, maxPrice);
+
+        if(productListByPriceRange.isEmpty()){
+            System.out.println("No Product found in this price range");
+        }
+        return productListByPriceRange;
+    }
 }

@@ -118,4 +118,17 @@ public class ProductDAO {
         session.close();
         return products;
     }
+
+    public List<Product> getProductByPriceRange(double minPrice, double maxPrice){
+        Session session = sf.openSession();
+        Query<Product> query = session.createQuery(
+                "from Product p where p.price between :minPrice and :maxPrice",
+                Product.class
+        );
+        query.setParameter("minPrice", minPrice);
+        query.setParameter("maxPrice", maxPrice);
+        List<Product> productListsByPriceRange = query.getResultList();
+        session.close();
+        return productListsByPriceRange;
+    }
 }
